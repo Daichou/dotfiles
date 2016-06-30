@@ -22,6 +22,19 @@ Bundle 'Yggdroot/indentLine'
 Bundle 'eparreno/vim-l9'
 Bundle 'elzr/vim-json'
 "Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1 
+let g:syntastic_auto_loc_list = 1 
+let g:syntastic_check_on_open = 1                                                                                                                             
+let g:syntastic_check_on_wq = 0 
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 '
+let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_compiler_options = ' -ansi'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -50,8 +63,9 @@ nnoremap <F11> :w <bar> exec '!fish'<CR>
 "Specific Configs
 
 "theme
-color inkpot
-colorscheme inkpot
+color Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Bright
+
 
 "neocomplcache
 let g:neocomplcache_enable_at_startup = 1
