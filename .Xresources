@@ -1,58 +1,48 @@
-! Cursor theme
-! xcursor.theme:            Vanilla-DMZ
-!
-! ! URxvt config
-! URxvt*termName:           rxvt-16color
-!
-! URxvt.scrollBar:          off
-! URxvt.font:               xft:monaco:size=10:antialias=true
-! URxvt.internalBorder:     0
-! URxvt*selectToClipboard:  true
-! URxvt*saveLines:          10000
-!
-! URxvt.perl-ext-common:    default,matcher,tabbedex,searchable-scrollback
-! URxvt.urlLauncher:        /usr/bin/chromium
-! URxvt.matcher.button:     1
-! URxvt.tabbed.tabbar-fg:   8
-! URxvt.tabbed.tabbar-bg:   0
-! URxvt.tabbed.tab-fg:      2
-! URxvt.tabbed.tab-bg:      0
-! URxvt.tabbed.new-button:  no
-! URxvt.tabbed.title:       no
-!
-! ! Tango color palette
-! URxvt*background:         #2e3436
-! URxvt*foreground:         #eeeeec
-! URxvt*cursorColor:        #8ae234
-! ! foreground color for underline
-! URxvt*colorUL:            #8ae234
-! ! line color for underline
-! URxvt*underlineColor:     #92659a
-! ! black dark/light
-! URxvt*color0:             #2e3436
-! URxvt*color8:             #6e706b
-! ! red dark/light
-! URxvt*color1:             #cc0000
-! URxvt*color9:             #ef2929
-! ! green dark/light
-! URxvt*color2:             #4e9a06
-! URxvt*color10:            #8ae234
-! ! yellow dark/light
-! URxvt*color3:             #edd400
-! URxvt*color11:            #fce94f
-! ! blue dark/light
-! URxvt*color4:             #3465a4
-! URxvt*color12:            #729fcf
-! ! magenta dark/light
-! URxvt*color5:             #92659a
-! URxvt*color13:            #c19fbe
-! ! cyan dark/light
-! URxvt*color6:             #07c7ca
-! URxvt*color14:            #63e9e9
-! ! white dark/light
-! URxvt*color7:             #d3d7cf
-! URxvt*color15:            #eeeeec
-!
-! ! xscreensaver
-! xscreensaver.fade:        false
-! xscreensaver.unfade:      false
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintlight
+Xft.dpi:       168
+Xft.lcdfilter: lcdlight
+Xcursor.size: 36
+URxvt.scrollBar: false
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.font: xft:Source Code Pro:style=Regular:size=9:antialias=true:hinting=true,xft:WenQuanYi Micro Hei:style=Regular:size=9
+URxvt.perl-ext-common: default,selection-to-clipboard,tabbed,fullscreen,url-select,keyboard-select
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+URxvt.termName: xterm-256color
+URxvt.loginShell: true
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+*URxvt*keysym.Home: \033OH
+*URxvt*keysym.End: \033OF
+*URxvt*keysym.F1: \033OP
+*URxvt*keysym.F2: \033OQ
+*URxvt*keysym.F3: \033OR
+*URxvt*keysym.F4: \033OS
+URxvt*keysym.F11: perl:fullscreen:switch
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt*color12: rgb:6c/6c/ff
+URxvt.transparent:   true
+URxvt.shading: 14
+URxvt.fading: 40
+URxvt*background: black
+URxvt.depth: 32
+URxvt*foreground: white
+URxvt.cursorBlink: 1
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
