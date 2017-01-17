@@ -17,25 +17,25 @@ Bundle 'Shougo/neocomplcache.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'guns/xterm-color-table.vim'
-Bundle 'Twinside/vim-cuteErrorMarker'
+"Bundle 'Twinside/vim-cuteErrorMarker'
 Bundle 'ntpeters/vim-better-whitespace'
 Bundle 'Yggdroot/indentLine'
 Bundle 'eparreno/vim-l9'
 Bundle 'elzr/vim-json'
 Plugin 'scrooloose/syntastic'
-Bundle 'valloric/YouCompleteMe'
+"Bundle 'valloric/YouCompleteMe'
 Bundle 'majutsushi/tagbar'
-
+Plugin 'honza/vim-snippets'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:ycm_global_ycm_extra_conf = '/home/tommycc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '/home/tommycc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "suntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 '
 let g:syntastic_c_compiler = 'gcc'
@@ -56,10 +56,10 @@ set noshowmode
 set number
 set modeline
 set t_Co=256
-set tabstop=2
+set tabstop=4
 set fileencodings=utf-8,big5
 set cursorline
-set mouse=a
+"set mouse=a
 syntax on
 autocmd filetype python nnoremap <F9> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F9> :w <bar> exec '!clear&&gcc '.shellescape('%').' -o '.shellescape('%:r').'&&./'.shellescape('%:r')<CR> 
@@ -103,15 +103,15 @@ function! Sudowrite()
     edit!
 endfunction
 command W call Sudowrite()0
-let Tlist_Compact_Format = 1 
-let Tlist_GainFocus_On_ToggleOpen = 1 
-let Tlist_Close_On_Select = 1 
-nnoremap <C-l> :TlistToggle<CR>  
+let Tlist_Compact_Format = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Close_On_Select = 1
+nnoremap <C-l> :TlistToggle<CR>
 
 "tagbar
-nmap <F12> :TagbarToggle<CR>           "toggle 
+nmap <F12> :TagbarToggle<CR>           "toggle
 let g:tagbar_ctags_bin='ctags'         "ctags程序的路径
-let g:tagbar_width=30                  "窗口宽度的设置
+let g:tagbar_width=25                  "窗口宽度的设置
 map <F3> :Tagbar<CR>
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 
@@ -120,4 +120,6 @@ let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
 map <F2> :NERDTreeToggle<CR>
 
-set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim
+map <F4> :GitGutterToggle<CR>
+
+set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim
