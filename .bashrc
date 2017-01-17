@@ -3,8 +3,8 @@
 #
 
 # If not running interactively, don't do anything
-if [ -f /usr/lib/python3.4/site-packages/powerline/bindings/bash/powerline.sh ]; then
-        tmux source /usr/lib/python3.4/site-packages/powerline/bindings/bash/powerline.sh
+if [ -f /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh ]; then
+        tmux source /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
         fi
 
 [[ $- != *i* ]] && return
