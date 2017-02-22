@@ -1,0 +1,14 @@
+--style=kr
+--indent=tab
+--indent-preprocessor
+--indent-cases
+--indent-switches
+--pad-oper
+--pad-header
+--max-instatement-indent=40
+--align-pointer=name
+--align-reference=name
+--keep-one-line-statements
+--convert-tabs
+--max-code-length=80
+--pad-method-colon=none
