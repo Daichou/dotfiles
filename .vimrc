@@ -22,14 +22,15 @@ Bundle 'ntpeters/vim-better-whitespace'
 Bundle 'Yggdroot/indentLine'
 Bundle 'eparreno/vim-l9'
 Bundle 'elzr/vim-json'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 "Bundle 'valloric/YouCompleteMe'
 Bundle 'majutsushi/tagbar'
 Plugin 'honza/vim-snippets'
+Plugin 'ctrlpvim/ctrlp.vim'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-"let g:ycm_global_ycm_extra_conf = '/home/tommycc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/home/tommycc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "suntastic
 let g:syntastic_always_populate_loc_list = 0
