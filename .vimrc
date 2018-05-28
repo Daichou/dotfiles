@@ -11,7 +11,7 @@ Bundle 'marcweber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
 "Bundle 'othree/vim-autocomplpop'
 "Bundle 'ervandew/supertab'
-"Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'scrooloose/nerdtree'
@@ -19,7 +19,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'guns/xterm-color-table.vim'
 "Bundle 'Twinside/vim-cuteErrorMarker'
 Bundle 'ntpeters/vim-better-whitespace'
-Bundle 'Yggdroot/indentLine'
+"Bundle 'Yggdroot/indentLine'
 Bundle 'eparreno/vim-l9'
 Bundle 'elzr/vim-json'
 "Plugin 'scrooloose/syntastic'
@@ -27,25 +27,31 @@ Bundle 'elzr/vim-json'
 Bundle 'majutsushi/tagbar'
 Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Bundle 'joonty/vim-phpqa.git'
+call vundle#end()
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:ycm_global_ycm_extra_conf = '/home/tommycc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "suntastic
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 '
+let g:syntastic_cpp_compiler_options = ' -std=c++14 '
 let g:syntastic_c_compiler = 'gcc'
 let g:syntastic_c_compiler_options = ' -ansi'
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_javascript_standard_generic = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
-call vundle#end()
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpcs_args='--tab-width=&tabstop'
+let g:ycm_show_diagnostics_ui = 1
 filetype plugin indent on
 
 "Basic Configs
@@ -60,13 +66,15 @@ set t_Co=256
 set tabstop=4
 set fileencodings=utf-8,big5
 set cursorline
+set clipboard=unnamed
+set clipboard=unnamedplus
 "set mouse=a
 syntax on
 autocmd filetype python nnoremap <F9> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F9> :w <bar> exec '!clear&&gcc '.shellescape('%').' -o '.shellescape('%:r').'&&./'.shellescape('%:r')<CR> 
-autocmd filetype cpp nnoremap <F9> :w <bar> exec '!clear;echo -n "====================";TEMP=`mktemp`;script $TEMP -e -q -c "g++ '.shellescape('%').' -std=c++11 -Wall -o '.shellescape('%:r').'" > /dev/null 2>&1 ;if [ $? == 0 ] ;then echo -e "\r\033[32m********************\033[0m";./'.shellescape('%:r').';else echo -e "\r\033[31mXXXXXXXXXXXXXXXXX\033[0m";cat $TEMP; fi'<CR>
+autocmd filetype cpp nnoremap <F9> :w <bar> exec '!clear;echo -n "====================";TEMP=`mktemp`;script $TEMP -e -q -c "g++ '.shellescape('%').' -std=c++14 -Wall -o '.shellescape('%:r').'" > /dev/null 2>&1 ;if [ $? == 0 ] ;then echo -e "\r\033[32m********************\033[0m";./'.shellescape('%:r').';else echo -e "\r\033[31mXXXXXXXXXXXXXXXXX\033[0m";cat $TEMP; fi'<CR>
 autocmd filetype c nnoremap <F8> :w <bar> exec '!clear&&gcc '.shellescape('%').' -o '.shellescape('%:r')<CR> 
-autocmd filetype cpp nnoremap <F8> :w <bar> exec '!clear&&g++ '.shellescape('%').' -std=c++11 -Wall -o '.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F8> :w <bar> exec '!clear&&g++ '.shellescape('%').' -std=c++14 -Wall -o '.shellescape('%:r')<CR>
 nnoremap <F10> :w <bar> exec '!cat '.shellescape('%').'\| xclip -selection clipboard'<CR>
 nnoremap <F11> :w <bar> exec '!fish'<CR>
 
@@ -122,5 +130,27 @@ let NERDTreeWinSize=30
 map <F2> :NERDTreeToggle<CR>
 
 map <F4> :GitGutterToggle<CR>
+
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+
+let g:phpqa_codesniffer_args = "--standard=PSR2"
+let g:phpqa_codecoverage_autorun = 1
 
 set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim
