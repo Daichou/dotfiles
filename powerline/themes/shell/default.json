@@ -1,0 +1,84 @@
+{
+	"segments": {
+		"above": [
+			{
+				"left": [
+					{
+						"function": "powerline.segments.common.net.hostname",
+						"args": {
+                            "only_if_ssh": false,
+                            "exclude_domain": true
+                        } 
+					},
+					{
+						"function": "powerline.segments.common.env.user",
+						"priority": 10
+					},
+                    {
+                        "function": "powerline.segments.common.net.internal_ip"
+                    },
+					{
+						"function": "powerline.segments.common.env.virtualenv",
+						"priority": 50
+					},
+					{
+						"function": "powerline.segments.shell.jobnum",
+						"priority": 20
+					},
+                    {
+                        "function": "powerline.segments.common.bat.battery",
+                        "argv": {
+                            "format": "Battery:3.0%"
+                        }
+                    },
+                    {
+                        "function": "powerline.segments.common.net.network_load"
+                    },
+                    {
+                        "function": "powerline.segments.common.sys.cpu_load_percent",
+                        "argv": {
+                            "format": "{0:.0f}%"
+                        }
+                    },
+                    {
+                        "function": "powerline.segments.common.time.date",
+                        "args": {
+                            "format": "%H:%M [%h%d]%A",
+                            "istime": true
+                        }
+                    }
+				],
+				"right": [
+                    {
+                        "function" : "powerline.segments.common.vcs.stash",
+                        "priority" : 10
+                    }
+                ]
+			},
+			{
+			}
+		],
+		"left": [
+			{
+				"function": "powerline.segments.shell.mode"
+			},
+            {
+                "function": "powerline.segments.shell.cwd",
+                "priority": 10,
+                "args": {
+                    "use_path_separator": true
+                }
+            },
+			{
+				"function": "powerline.segments.shell.last_pipe_status",
+				"priority": 10
+			}
+		],
+		"right": [
+            {
+                "function" : "powerline.segments.common.vcs.branch",
+                "priority" : 10
+            }
+		]
+	}
+}
