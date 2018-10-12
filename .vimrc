@@ -29,6 +29,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Bundle 'joonty/vim-phpqa.git'
+Plugin 'nvie/vim-flake8'
 call vundle#end()
 
 set statusline+=%#warningmsg#
@@ -52,6 +53,9 @@ let g:syntastic_javascript_eslint_exec = 'eslint'
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_phpcs_args='--tab-width=&tabstop'
 let g:ycm_show_diagnostics_ui = 1
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_python_exec = 'python'
+"let g:syntastic_python_args = ['-m', 'py_compile']
 filetype plugin indent on
 
 "Basic Configs
@@ -124,6 +128,13 @@ let g:tagbar_width=25                  "窗口宽度的设置
 map <F3> :Tagbar<CR>
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 
+"flake8
+let g:flake8_quickfix_location="topleft"
+let g:flake8_quickfix_height=7
+let g:flake8_show_quickfix=0  " don't show
+let g:flake8_show_in_gutter=0  " don't show (default)
+let g:flake8_show_in_file=0  " don't show (default)
+
 "nerdtree
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=30
@@ -139,12 +150,18 @@ function! ToggleHiddenAll()
         set noruler
         set laststatus=0
         set noshowcmd
+        let g:flake8_show_quickfix=0  " don't show
+        let g:flake8_show_in_gutter=0  " don't show (default)
+        let g:flake8_show_in_file=0  " don't show (default)
     else
         let s:hidden_all = 0
         set showmode
         set ruler
         set laststatus=2
         set showcmd
+        let g:flake8_show_quickfix=1   "show
+        let g:flake8_show_in_gutter=1  "show
+        let g:flake8_show_in_file=1    "show
     endif
 endfunction
 
@@ -153,4 +170,4 @@ nnoremap <S-h> :call ToggleHiddenAll()<CR>
 let g:phpqa_codesniffer_args = "--standard=PSR2"
 let g:phpqa_codecoverage_autorun = 1
 
-set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim
+set rtp+=/usr/lib/python3.7/site-packages/powerline/bindings/vim
