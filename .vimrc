@@ -57,7 +57,10 @@ let g:ycm_show_diagnostics_ui = 1
 "let g:syntastic_python_exec = 'python'
 "let g:syntastic_python_args = ['-m', 'py_compile']
 filetype plugin indent on
-
+"autocmd filetype python let g:syntastic_always_populate_loc_list = 0
+"autocmd filetype python let g:syntastic_auto_loc_list = 0
+"autocmd filetype python let g:syntastic_check_on_open = 0
+"autocmd filetype python let g:syntastic_check_on_wq = 0
 "Basic Configs
 set shiftwidth=4
 set expandtab
@@ -150,6 +153,7 @@ function! ToggleHiddenAll()
         set noruler
         set laststatus=0
         set noshowcmd
+        lclose
         let g:flake8_show_quickfix=0  " don't show
         let g:flake8_show_in_gutter=0  " don't show (default)
         let g:flake8_show_in_file=0  " don't show (default)
@@ -159,6 +163,7 @@ function! ToggleHiddenAll()
         set ruler
         set laststatus=2
         set showcmd
+        lopen
         let g:flake8_show_quickfix=1   "show
         let g:flake8_show_in_gutter=1  "show
         let g:flake8_show_in_file=1    "show
