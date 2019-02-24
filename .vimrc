@@ -33,25 +33,25 @@ Plugin 'nvie/vim-flake8'
 call vundle#end()
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:ycm_global_ycm_extra_conf = '/home/tommycc/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 "suntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++14 '
-let g:syntastic_c_compiler = 'gcc'
-let g:syntastic_c_compiler_options = ' -ansi'
-let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_javascript_standard_generic = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint'
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_args='--tab-width=&tabstop'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 1
+"let g:syntastic_cpp_compiler = 'g++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++14 '
+"let g:syntastic_c_compiler = 'gcc'
+"let g:syntastic_c_compiler_options = ' -ansi'
+"let g:syntastic_javascript_checkers = ['standard']
+"let g:syntastic_javascript_standard_generic = 1
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exec = 'eslint'
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+"let g:syntastic_php_phpcs_args='--tab-width=&tabstop'
 let g:ycm_show_diagnostics_ui = 1
 "let g:syntastic_python_checkers = ['pylint']
 "let g:syntastic_python_exec = 'python'
@@ -176,3 +176,24 @@ let g:phpqa_codesniffer_args = "--standard=PSR2"
 let g:phpqa_codecoverage_autorun = 1
 
 set rtp+=/usr/lib/python3.7/site-packages/powerline/bindings/vim
+
+set tags=./tags,./TAGS,tags;~,TAGS;~
+
+set cscopetag
+set csto=0
+
+if filereadable("cscope.out")
+   cs add cscope.out
+elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+endif
+set cscopeverbose
+
+nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap zt :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap ze :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
