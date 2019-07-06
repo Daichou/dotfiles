@@ -63,3 +63,11 @@ Edit powerline python path in vimrc
 4. For bash, move `.bashrc` to correct location, and edit python path and powerline bindings
 5. For tmux, move `.tmux.conf` to correct location, and edit python path and powerline bindings
 6. powerline color scheme, move powerline folder to `.config` or move necessary file to correct location.
+
+## Other config
+### conky
+#### dependency
+* conky-cairo
+#### license :MIT
+Conky Icons by Carelli.ttf file come from [https://github.com/antoniocarelli/conky](https://github.com/antoniocarelli/conky)
+config modifed from same site.
